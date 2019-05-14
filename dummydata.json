@@ -1,0 +1,28 @@
+{
+
+  "order" : {
+    "customerid" : "asd",
+    "phoneNumber" : "06-70-123-4567",
+    "address" : "Miskolc",
+    "date":"2001-09-11",
+    "order" : [
+      {
+        "shutterType" : "Metal",
+        "height" : "50",
+        "width" : "90",
+        "position" : "Internal",
+        "amount" : "2",
+        "Finished" : "false"
+      },
+      {
+        "shutterType" : "Plastic",
+        "height" : "150",
+        "width" : "190",
+        "position" : "External",
+        "amount" : "1",
+        "Finished" : "false"
+      }
+    ],
+    "isPaid" : "false"
+  }
+}

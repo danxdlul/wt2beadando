@@ -1,0 +1,15 @@
+var express = require('express');
+var path = require('path');
+var cookieparser = require('cookie-parser');
+var logger = require('morgan');
+var bodyparser = require('body-parser');
+var ShutterController = require('./shutterController');
+var app = express();
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(cookieparser());
+app.use(bodyparser.json());
+app.use(express.static(path.join(__dirname,'reactapp/build')));
+app.use('/',ShutterController);
+module.exports = app;
