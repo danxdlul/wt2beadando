@@ -37,10 +37,12 @@ class Sidebar extends Component{
                         <LinkContainer to="/">
                             <span className="d-block d-lg-none">StockShutter</span>
                         </LinkContainer>
+                        <LinkContainer to="/">
                         <span className="d-none d-lg-block">
                         <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={Logo}
                          alt=""/>
                         </span>
+                        </LinkContainer>
                     </span>
 
                     <button onClick={this.toggleNavbar} className={`${classTwo}`} type="button" data-toggle="collapse"
