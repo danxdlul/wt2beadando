@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Button, Form, Col, Row} from "react-bootstrap";
+import {Button, Form, Col, Row, Table} from "react-bootstrap";
 import Store from "../Store/Store";
 import shutterActions from "../shutterActions";
+import OrderItem from "./OrderItem";
 
 export class OrderAdder extends Component{
     state = {
@@ -10,10 +11,10 @@ export class OrderAdder extends Component{
         phoneNumber: "",
         address: "",
         currentOrder:{
-            shutterType: "Metal",
+            shutterType: "Plastic",
             height: "",
             width: "",
-            position: "Internal",
+            position: "Interior",
             amount: "",
             Finished:"false"
         },
@@ -76,6 +77,11 @@ export class OrderAdder extends Component{
                 isPaid: "false"
             }};
         shutterActions.createOrder(order);
+        this.state.order = [];
+        document.getElementById("submitForm").reset();
+        this.state.readytosubmit = !this.state.readytosubmit;
+        shutterActions.getUsersOrders(Store.currentUser)
+        Store.emitChange();
     };
 
     SubmitMode = (e) => {
@@ -90,6 +96,16 @@ export class OrderAdder extends Component{
         return(
 
         <div>
+            <div className="container-fluid p-0">
+
+                <section className="p-3 p-lg-5 d-flex" id="about">
+                    <div className="w-100">
+                        <h1 className="mb-0">Make
+                            <span className="text-primary">Order</span>
+                        </h1>
+                    </div>
+                </section>
+            </div>
             <Form id="orderForm" onSubmit={e=>this.submitOrder(e)} style={this.state.readytosubmit ? {display: 'none'} : {}}>
                 <Form.Group as={Row} controlId="width">
                     <Form.Label column sm="2">Enter width of window: </Form.Label>
@@ -113,10 +129,10 @@ export class OrderAdder extends Component{
                         </Form.Control>
                     </Col>
                 </Form.Group>
-                <Form.Group as={Row} controlId="material">
+                <Form.Group as={Row} controlId="shutterType">
                     <Form.Label column sm="2">Select shutter material: </Form.Label>
                     <Col sm="10">
-                        <Form.Control required as="select" name="material" onChange={this.onChange}>
+                        <Form.Control required as="select" name="shutterType" onChange={this.onChange}>
                             {this.state.variants.material.map((mat)=>(
                                 <option>{mat}</option>
                             ))}
@@ -136,7 +152,7 @@ export class OrderAdder extends Component{
                     </Col>
                 </Form.Group>
             </Form>
-            <Form onSubmit={e => this.onOrderSubmitted(e)} style={this.state.readytosubmit ? {} : {display: 'none'}}>
+            <Form id="submitForm" onSubmit={e => this.onOrderSubmitted(e)} style={this.state.readytosubmit ? {} : {display: 'none'}}>
                 <Form.Group as={Row} controlId="phoneNumber">
                     <Form.Label column sm="2">Enter Phone Number: </Form.Label>
                     <Col sm="10">
@@ -153,6 +169,34 @@ export class OrderAdder extends Component{
                     <Button variant="success" type="submit">Submit Order</Button>
                 </Form.Group>
             </Form>
+            <div className="container-fluid p-0" style={this.state.order.length === 0 ? {display: 'none'} : {}}>
+
+                <section className="p-3 p-lg-5 d-flex" id="about">
+                    <div className="w-100">
+                        <h1 className="mb-0">Shopping
+                            <span className="text-primary">Cart</span>
+                        </h1>
+                    </div>
+                </section>
+            </div>
+                <Table style={this.state.order.length === 0 ? {display: 'none'} : {}}>
+                    <thead>
+                    <tr>
+                        <th>Shutter Material</th>
+                        <th>Shutter Position</th>
+                        <th>Width</th>
+                        <th>Height</th>
+                        <th>Installed</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {this.state.order.map((order) =>(
+
+                        <OrderItem key={order._id} order={order} shoppingcartitem={true}/>
+                    ))}
+                    </tbody>
+                </Table>
         </div>
         )
     }

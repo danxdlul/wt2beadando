@@ -46,8 +46,9 @@ class JobData extends Component{
                 <td>{this.props.order.width}</td>
                 <td>{this.props.order.height}</td>
                 <td>{this.state.parts.nails} number of nails, {this.state.parts.shutterrectangles} number of {this.state.parts.material} rectangles</td>
+                <td>{this.props.date}</td>
                 <td>{this.props.order.Finished}</td>
-                <td><Button onClick={this.onDataClick.bind(this)}>Build</Button></td>
+                <td><Button onClick={this.onDataClick.bind(this)} style={this.props.order.Finished === "true" ? {display: 'none'} : {}}>Build</Button></td>
             </tr>
         );
     }

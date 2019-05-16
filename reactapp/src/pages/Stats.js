@@ -22,12 +22,22 @@ class Stats extends Component{
     render(){
         return(
             <div>
+                <div className="container-fluid p-0">
+
+                    <section className="p-3 p-lg-5 d-flex" id="about">
+                        <div className="w-100">
+                            <h1 className="mb-0">Check
+                                <span className="text-primary">Stats</span>
+                            </h1>
+                        </div>
+                    </section>
+                </div>
                 <Table>
                     <thead>
                     <tr>
-                        <th>Plastic</th>
-                        <th>Metal</th>
-                        <th>Paper</th>
+                        <th>Plastic shutters ordered</th>
+                        <th>Metal shutters ordered</th>
+                        <th>Paper shutters ordered</th>
                     </tr>
                     </thead>
                     <tbody>

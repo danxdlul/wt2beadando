@@ -18,8 +18,8 @@ describe('Test for accepting correct order', function () {
                 },
                     {
                         shutterType: "metal",
-                        windowHeight: "100",
-                        windowWidth:"250",
+                        height: "100",
+                        width:"250",
                         position:"Internal",
                         amount:"1",
                         Finished:"false"
@@ -53,6 +53,6 @@ describe('Test for denying incorrect data',function () {
                         Finished:"false"
                     }],
             }};
-        assert.strictEqual(DAO.CheckIfOrderValid(order),true)
+        assert.strictEqual(DAO.CheckIfOrderValid(order),false)
     })
 })

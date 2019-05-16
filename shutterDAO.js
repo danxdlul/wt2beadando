@@ -153,7 +153,7 @@ function CheckIfOrderValid(req) {
         return false;
     }
     for(var i = 0;i<testVal.order.length;i++){
-        if(testVal.order[i].shutterType === undefined || testVal.order[i].shutterType === "" || testVal.order[i].height === undefined || testVal.order[i].height === "" || testVal.order[i].width === undefined || testVal.order[i].width === "" || testVal.order[i].amount === undefined || testVal.order[i].amount === "" || testVal.order[i].Finished !== 'false'){
+        if(testVal.order[i].shutterType === undefined || testVal.order[i].shutterType === "" || testVal.order[i].height === undefined || testVal.order[i].height === "" || testVal.order[i].width === undefined || testVal.order[i].width === "" || testVal.order[i].amount === undefined || testVal.order[i].amount === "" || testVal.order[i].Finished !== "false"){
             console.log("Error in job description");
             return false;
         }

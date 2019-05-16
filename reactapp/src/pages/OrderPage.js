@@ -10,7 +10,7 @@ class OrderPage extends Component{
         super(props);
         this.onChange = this.onChange.bind(this);
         this.state = {
-            orders: null
+            orders: []
         }
     }
 
@@ -35,7 +35,17 @@ class OrderPage extends Component{
         }
         return(
             <div>
-                <Table>
+                <div className="container-fluid p-0" style={this.state.orders.length  === 0 ? {display: 'none'} : {}}>
+
+                    <section className="p-3 p-lg-5 d-flex" id="about">
+                        <div className="w-100">
+                            <h1 className="mb-0">Order
+                                <span className="text-primary">History</span>
+                            </h1>
+                        </div>
+                    </section>
+                </div>
+                <Table style={this.state.orders.length === 0 ? {display: 'none'} : {}}>
                     <thead>
                     <tr>
                         <th>Shutter Material</th>

@@ -3,15 +3,20 @@
     font-weight: 800;
     letter-spacing: 0.05rem;
     text-transform: uppercase;
+    cursor: pointer;
   }
   .navbar-toggler {
     &:focus {
       outline-color: lighten($primary, 15%);
+      cursor: pointer;
     }
   }
   .login-textbox{
     padding-top: 20px;
     padding-bottom: 35px;
+  }
+  .hoverpointing{
+    cursor: pointer;
   }
 }
 @media (min-width: 992px) {

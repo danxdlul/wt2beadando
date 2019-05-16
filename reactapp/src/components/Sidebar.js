@@ -35,11 +35,11 @@ class Sidebar extends Component{
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
                     <span className="navbar-brand js-scroll-trigger">
                         <LinkContainer to="/">
-                            <span className="d-block d-lg-none">StockShutter</span>
+                            <span className="d-block hoverpointing d-lg-none">StockShutter</span>
                         </LinkContainer>
                         <LinkContainer to="/">
                         <span className="d-none d-lg-block">
-                        <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={Logo}
+                        <img className="img-fluid hoverpointing img-profile rounded-circle mx-auto mb-2" src={Logo}
                          alt=""/>
                         </span>
                         </LinkContainer>

@@ -32,6 +32,16 @@ class ManagerPage extends Component{
         }
         return(
             <div>
+                <div className="container-fluid p-0">
+
+                    <section className="p-3 p-lg-5 d-flex" id="about">
+                        <div className="w-100">
+                            <h1 className="mb-0">Manage
+                                <span className="text-primary">Company</span>
+                            </h1>
+                        </div>
+                    </section>
+                </div>
                 {this.state.orders.map((order)=>(
                     <Table key={uuid.v4()}>
                         <tbody>

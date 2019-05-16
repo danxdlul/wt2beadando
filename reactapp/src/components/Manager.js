@@ -33,6 +33,7 @@ class Manager extends Component{
                 <td>
                     <input type="date" id="date-picker" onChange={this.onDatePickerChanged} name="install-date"/>
                     <Button onClick={this.onDateSubmit}>Schedule Installation</Button>
+                    <span>Current Date:{this.props.order.order.date}</span>
                 </td>
             </tr>
         );

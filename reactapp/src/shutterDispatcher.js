@@ -27,7 +27,7 @@ dispatcher.register((data)=>{
     if(data.payload.actionType !== Constants.CREATE_ORDER){
         return;
     }
-    axios.post('/createOrder',data.payload.payload.data).then(res=>{alert("Thank you for your purchase");}).catch(e=>{alert(e)});
+    axios.post('/createOrder',data.payload.payload.data).then(res=>{alert("Thank you for your purchase");shutterActions.getUsersOrders(Store.currentUser);Store.emitChange();}).catch(e=>{alert(e)});
 });
 dispatcher.register((data)=>{
     if(data.payload.actionType !== Constants.FINISH_JOB){
@@ -38,17 +38,10 @@ dispatcher.register((data)=>{
 
 });
 dispatcher.register((data)=>{
-    if(data.payload.actionType !== Constants.MODIFY_DATE){
+    if(data.payload.actionType !== Constants.MODIFY_DATE) {
         return;
     }
-    fetch('/modifyDate',{
-        method: 'POST',
-        headers: {
-            "Content-Type" : 'application/json'
-        },
-        body:JSON.stringify(data.payload.payload)
-    }).then(res => {alert("Date Registered"); shutterActions.listAllOrders(); Store.emitChange();}).catch(e => {alert(e)});
-
+    axios.post(`modifyDate/${data.payload.payload.id}/${data.payload.payload.date}`).then(res=>{shutterActions.listAllOrders();Store.emitChange();}).catch(e=>alert(e));
 });
 dispatcher.register((data)=>{
     if(data.payload.actionType !== Constants.GET_ORDERS){
@@ -80,7 +73,7 @@ dispatcher.register((data)=>{
         return;
     }
     console.log(data.payload.payload);
-    axios.post(`/payOrder/${data.payload.payload.id}`).then(res=>{shutterActions.listAllOrders();Store.emitChange();}).catch(e=>{alert(e)});
+    axios.post(`/payOrder/${data.payload.payload.id}`).then(res=>{shutterActions.getUsersOrders(Store.currentUser);Store.emitChange();}).catch(e=>{alert(e)});
 
 });
 export default dispatcher;
